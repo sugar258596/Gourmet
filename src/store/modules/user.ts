@@ -6,8 +6,8 @@ import { RoleEnum } from '/@/enums/roleEnum';
 import { PageEnum } from '/@/enums/pageEnum';
 import { ROLES_KEY, TOKEN_KEY, USER_INFO_KEY } from '/@/enums/cacheEnum';
 import { getAuthCache, setAuthCache } from '/@/utils/auth';
-import { GetUserInfoModel, LoginParams } from '/@/api/sys/model/userModel';
-import { doLogout, getUserInfo, loginApi } from '/@/api/sys/user';
+import { LoginParams, GetUserInfoModel } from '@/api/sys/model/authModel';
+import { loginApi, GetPermCode, getUserInfo, doLogout } from '/@/api/sys/auth';
 import { useI18n } from '/@/hooks/web/useI18n';
 import { useMessage } from '/@/hooks/web/useMessage';
 import { router } from '/@/router';
@@ -23,6 +23,7 @@ interface UserState {
   roleList: RoleEnum[];
   sessionTimeout?: boolean;
   lastUpdateTime: number;
+  GetPermCode: string;
 }
 
 export const useUserStore = defineStore({
@@ -38,6 +39,7 @@ export const useUserStore = defineStore({
     sessionTimeout: false,
     // Last fetch time
     lastUpdateTime: 0,
+    GetPermCode: GetPermCode,
   }),
   getters: {
     getUserInfo(state): UserInfo {
@@ -93,7 +95,7 @@ export const useUserStore = defineStore({
         const data = await loginApi(loginParams, mode);
         const { token } = data;
 
-        // save token
+        // // save token
         this.setToken(token);
         return this.afterLoginAction(goHome);
       } catch (error) {
@@ -104,7 +106,6 @@ export const useUserStore = defineStore({
       if (!this.getToken) return null;
       // get user info
       const userInfo = await this.getUserInfoAction();
-
       const sessionTimeout = this.sessionTimeout;
       if (sessionTimeout) {
         this.setSessionTimeout(false);
@@ -120,11 +121,13 @@ export const useUserStore = defineStore({
         }
         goHome && (await router.replace(userInfo?.homePath || PageEnum.BASE_HOME));
       }
+      // return null;
       return userInfo;
     },
     async getUserInfoAction(): Promise<UserInfo | null> {
       if (!this.getToken) return null;
       const userInfo = await getUserInfo();
+
       const { roles = [] } = userInfo;
       if (isArray(roles)) {
         const roleList = roles.map((item) => item.value) as RoleEnum[];

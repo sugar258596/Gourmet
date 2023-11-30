@@ -24,6 +24,15 @@
         :placeholder="t('sys.login.password')"
       />
     </FormItem>
+    <FormItem name="swxCode" class="enter-x">
+      <CountCode
+        size="large"
+        class="fix-auto-fill"
+        v-model:value="formData.swxCode"
+        :sendCodeApi="handleCode"
+        :placeholder="t('sys.login.smsCode')"
+      />
+    </FormItem>
 
     <ARow class="enter-x">
       <ACol :span="12">
@@ -102,6 +111,8 @@
   import { useDesign } from '@/hooks/web/useDesign';
   //import { onKeyStroke } from '@vueuse/core';
 
+  import { CountCode } from '@/components/CountDown';
+
   const ACol = Col;
   const ARow = Row;
   const FormItem = Form.Item;
@@ -121,6 +132,7 @@
   const formData = reactive({
     account: 'vben',
     password: '123456',
+    swxCode: '',
   });
 
   const { validForm } = useFormValid(formRef);
@@ -128,6 +140,8 @@
   //onKeyStroke('Enter', handleLogin);
 
   const getShow = computed(() => unref(getLoginState) === LoginStateEnum.LOGIN);
+
+  const handleCode = userStore.GetPermCode;
 
   async function handleLogin() {
     const data = await validForm();
@@ -137,19 +151,20 @@
       const userInfo = await userStore.login({
         password: data.password,
         username: data.account,
+        swxCode: data.swxCode,
         mode: 'none', //不要默认的错误提示
       });
       if (userInfo) {
         notification.success({
           message: t('sys.login.loginSuccessTitle'),
-          description: `${t('sys.login.loginSuccessDesc')}: ${userInfo.realName}`,
+          description: `${t('sys.login.loginSuccessDesc')}: ${userInfo.username}`,
           duration: 3,
         });
       }
     } catch (error) {
       createErrorModal({
         title: t('sys.api.errorTip'),
-        content: (error as unknown as Error).message || t('sys.api.networkExceptionMsg'),
+        content: (error as unknown as Error).message || t('sys.api.networkExceptionMsg' + 132123),
         getContainer: () => document.body.querySelector(`.${prefixCls}`) || document.body,
       });
     } finally {
