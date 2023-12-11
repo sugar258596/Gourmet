@@ -65,3 +65,23 @@ export function isHttpUrl(path: string): boolean {
   const reg = /^http(s)?:\/\/([\w-]+\.)+[\w-]+(\/[\w- ./?%&=]*)?/;
   return reg.test(path);
 }
+
+/**
+ * 装换成为标准北京时间
+ * @param {string} Time  标准的国际协调时间（UTC）时间
+ * @returns {string}
+ */
+export const TimeLoading = (Time: string): string => {
+  const utcTime = new Date(Time);
+  const beijingTime = new Intl.DateTimeFormat('zh-CN', {
+    timeZone: 'Asia/Shanghai',
+    hour12: false,
+    year: 'numeric',
+    month: '2-digit',
+    day: '2-digit',
+    hour: '2-digit',
+    minute: '2-digit',
+    second: '2-digit',
+  }).format(utcTime);
+  return beijingTime.replace(/\//g, '-');
+};
