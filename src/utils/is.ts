@@ -85,3 +85,9 @@ export const TimeLoading = (Time: string): string => {
   }).format(utcTime);
   return beijingTime.replace(/\//g, '-');
 };
+
+export const validateEmailOrPhone = (value: string) => {
+  const regex = /^(\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*|\d{11})$/;
+  if (regex.test(value)) return true;
+  return false;
+};
