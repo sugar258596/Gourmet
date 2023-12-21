@@ -174,5 +174,10 @@
     "authColumn": "权限列",
     "resizeParentHeightTable": "继承父元素高度",
     "vxeTable": "VxeTable"
+  },
+  "user": {
+    "userManagement": "用户管理",
+    "personnel": "用户",
+    "address": "收货地址"
   }
 }

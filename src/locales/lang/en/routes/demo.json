@@ -175,5 +175,10 @@
     "authColumn": "Auth column",
     "resizeParentHeightTable": "resizeParentHeightTable",
     "vxeTable": "VxeTable"
+  },
+  "user": {
+    "UserManagement": "User management",
+    "personnel": "User ",
+    "address": "User address"
   }
 }

@@ -187,6 +187,8 @@
     const uploadApi = props.uploadApi;
     if (uploadApi && isFunction(uploadApi)) {
       const blob = dataURLtoBlob(previewSource.value);
+      console.log(blob);
+
       try {
         setModalProps({ confirmLoading: true });
         const result = await uploadApi({ name: 'file', file: blob, filename });
