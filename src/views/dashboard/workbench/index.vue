@@ -8,6 +8,7 @@
       @submit="handleSubmit"
       :submitButtonOptions="{ text: '提交', type: 'primary' }"
     />
+    <review class="px-10" />
   </PageWrapper>
 </template>
 <script lang="ts" setup>
@@ -15,6 +16,7 @@
   import { BasicForm, FormSchema } from '@/components/Form';
   import { useMessage } from '@/hooks/web/useMessage';
   import { PageWrapper } from '@/components/Page';
+  import review from './review.vue';
 
   import { uploadApi } from '@/api/sys/upload';
 
@@ -97,7 +99,8 @@
         api: uploadApi, // 上传地址
         accept: ['png', 'jpeg', 'jpg'], // 接受的文件类型
         maxSize: 2, // 文件大小限制
-        maxNumber: 6, // 文件数量限制
+        maxNumber: 1, // 文件数量限制
+        emptyHidePreview: false, // 无图片时隐藏预览
         onChange: (fileList: any) => {
           console.log('fileList', fileList);
         },
