@@ -74,7 +74,7 @@
           content: value.value,
           datetime: dayjs().locale('zh-cn').fromNow(),
         },
-        ...comments.value,
+        // ...comments.value,
       ];
       value.value = '';
     }, 1000);
