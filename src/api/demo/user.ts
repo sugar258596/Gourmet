@@ -5,10 +5,10 @@ import { AddParams, SearchParams, SearchInfoModel } from './model/userModel';
 import { SuccessMessageMode } from '/#/axios';
 
 enum Api {
-  AddUser = '/user/adduser',
-  GetUser = '/user',
-  EditUser = '/user/1',
-  DeleteUser = '/user/2',
+  AddUser = '/user/add',
+  GetUser = '/user/get',
+  EditUser = '/user/patch',
+  DeleteUser = '/user/delete',
 }
 
 /**
