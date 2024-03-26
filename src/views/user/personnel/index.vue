@@ -50,7 +50,7 @@
 
   import { uploadApi } from '@/api/sys/upload';
   import { TimeLoading } from '@/utils/is';
-  import { AppendApi, SearchApi, DeleteApi } from '@/api/manage/user';
+  import { AppendApi, SearchApi, DeleteApi } from '@/api/demo/user';
 
   import { FormModal, EmitModal } from '../index';
   import { getUserColumns, getFormConfig, getModalUser } from '../table';
@@ -117,3 +117,4 @@
   };
 </script>
 <style lang="scss" scoped></style>
+/@/api/demo/user

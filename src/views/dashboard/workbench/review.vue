@@ -1,39 +1,41 @@
 <template>
-  <List
-    v-if="comments.length"
-    :data-source="comments"
-    :header="`${comments.length} ${comments.length > 1 ? 'replies' : 'reply'}`"
-    item-layout="horizontal"
-  >
-    <template #renderItem="{ item }">
-      <list-item>
-        <comment :author="item.author" :avatar="item.avatar" :content="item.content">
-          <template #datetime>
-            <tooltip :title="dayjs().format('YYYY-MM-DD HH:mm:ss')">
-              <span>{{ item.datetime }}</span>
-            </tooltip>
-          </template>
-        </comment>
-      </list-item>
-    </template>
-  </List>
-  <comment>
-    <template #avatar>
-      <avatar :size="64">
-        <template #icon><UserOutlined /></template>
-      </avatar>
-    </template>
-    <template #content>
-      <form-item>
-        <Textarea v-model:value="value" :rows="4" />
-      </form-item>
-      <form-item>
-        <Button html-type="submit" :loading="submitting" type="primary" @click="handleSubmit">
-          Add Comment
-        </Button>
-      </form-item>
-    </template>
-  </comment>
+  <div>
+    <List
+      v-if="comments.length"
+      :data-source="comments"
+      :header="`${comments.length} ${comments.length > 1 ? 'replies' : 'reply'}`"
+      item-layout="horizontal"
+    >
+      <template #renderItem="{ item }">
+        <list-item>
+          <comment :author="item.author" :avatar="item.avatar" :content="item.content">
+            <template #datetime>
+              <tooltip :title="dayjs().format('YYYY-MM-DD HH:mm:ss')">
+                <span>{{ item.datetime }}</span>
+              </tooltip>
+            </template>
+          </comment>
+        </list-item>
+      </template>
+    </List>
+    <comment>
+      <template #avatar>
+        <avatar :size="64">
+          <template #icon><UserOutlined /></template>
+        </avatar>
+      </template>
+      <template #content>
+        <form-item>
+          <Textarea v-model:value="value" :rows="4" />
+        </form-item>
+        <form-item>
+          <Button html-type="submit" :loading="submitting" type="primary" @click="handleSubmit">
+            Add Comment
+          </Button>
+        </form-item>
+      </template>
+    </comment>
+  </div>
 </template>
 <script lang="ts" setup>
   import { ref } from 'vue';
@@ -56,6 +58,7 @@
   type CommentData = Record<string, string>;
 
   const comments = ref<CommentData[]>([]);
+
   const submitting = ref<boolean>(false);
   const value = ref<string>('');
   const handleSubmit = () => {
@@ -74,7 +77,7 @@
           content: value.value,
           datetime: dayjs().locale('zh-cn').fromNow(),
         },
-        // ...comments.value,
+        ...comments.value,
       ];
       value.value = '';
     }, 1000);

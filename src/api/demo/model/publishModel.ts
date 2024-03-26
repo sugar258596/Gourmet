@@ -33,3 +33,8 @@ export interface GetFoodPost {
   page?: number;
   pageSize?: number;
 }
+
+export interface GetInfoModel {
+  List: List[];
+  length: number;
+}

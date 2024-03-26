@@ -9,8 +9,20 @@
   </div>
 </template>
 <script setup lang="ts">
+  import { onMounted } from 'vue';
   import { Card } from 'ant-design-vue';
   import { Avatar, Content } from './components/index';
+
+  import { getFoodPost } from '@/api/demo/publish';
+
+  onMounted(() => {
+    init();
+  });
+
+  const init = async () => {
+    const res = await getFoodPost();
+    console.log(res);
+  };
 </script>
 
 <style lang="scss" scoped>

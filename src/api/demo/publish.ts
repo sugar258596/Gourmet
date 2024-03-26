@@ -2,7 +2,7 @@ import { defHttp } from '/@/utils/http/axios';
 
 import { ErrorMessageMode } from '/#/axios';
 
-import { addFoodPost, GetFoodPost, List } from './model/publishModel';
+import { addFoodPost, GetFoodPost, GetInfoModel } from './model/publishModel';
 import { SucssInfoModel } from '../type';
 
 // 获取发布以及删除的接口
@@ -46,8 +46,8 @@ export function addFoodPost(params: addFoodPost, mode: ErrorMessageMode = 'modal
  * @returns
  */
 
-export function getFoodPost(params: GetFoodPost, mode: ErrorMessageMode = 'modal') {
-  return defHttp.get<SucssInfoModel<List[]>>(
+export function getFoodPost(params?: GetFoodPost, mode: ErrorMessageMode = 'modal') {
+  return defHttp.get<SucssInfoModel<GetInfoModel[]>>(
     {
       url: Api.GetFoodPost,
       params,
