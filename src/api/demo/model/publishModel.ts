@@ -1,3 +1,5 @@
+import { GetUserInfoModel } from '../../sys/model/userModel';
+
 interface Image {
   filename: string;
   imgURL: string;
@@ -5,7 +7,7 @@ interface Image {
   type: string;
 }
 
-export interface List {
+export interface ListTpye {
   id: number;
   title: string;
   description: string;
@@ -13,6 +15,7 @@ export interface List {
   rating: number;
   createdAt: string;
   updatedAt: string;
+  user: Pick<GetUserInfoModel, 'userId' | 'username' | 'avatar'>;
 }
 
 /**
@@ -35,6 +38,6 @@ export interface GetParams {
 }
 
 export interface GetInfoModel {
-  List: List[];
+  List: ListTpye[];
   length: number;
 }

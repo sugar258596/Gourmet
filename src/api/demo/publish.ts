@@ -48,7 +48,7 @@ export function addFoodPost(params: AddParams, mode: ErrorMessageMode = 'modal')
  */
 
 export function getFoodPost(params?: GetParams, mode: ErrorMessageMode = 'modal') {
-  return defHttp.get<SucssInfoModel<GetInfoModel[]>>(
+  return defHttp.get<GetInfoModel>(
     {
       url: Api.GetFoodPost,
       params,

@@ -1,10 +1,8 @@
 <template>
   <div class="text-center py-2">
     <div class="basic">
-      <avatar :size="64">
-        <template #icon><UserOutlined /></template>
-      </avatar>
-      <h5 class="my-1">ID</h5>
+      <Avatar :size="64" :src="avatar" />
+      <h5 class="my-1">{{ name }}</h5>
     </div>
     <div class="follow my-2 cursor-pointer">
       <badge count="关注" />
@@ -17,7 +15,10 @@
 
 <script setup lang="ts">
   import { Avatar, Rate, Badge } from 'ant-design-vue';
-  import { UserOutlined } from '@ant-design/icons-vue';
+
+  import { AvatarProps } from '../type';
+
+  defineProps<AvatarProps>();
 </script>
 <style lang="scss" scoped>
   .Rate {
