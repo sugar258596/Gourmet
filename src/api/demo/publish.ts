@@ -5,6 +5,8 @@ import { ErrorMessageMode } from '/#/axios';
 import { AddParams, GetParams, GetInfoModel } from './model/publishModel';
 import { SucssInfoModel } from '../type';
 
+import { ContentTypeEnum } from '/@/enums/httpEnum';
+
 // 获取发布美食以及删除的接口
 
 enum Api {
@@ -29,6 +31,9 @@ export function addFoodPost(params: AddParams, mode: ErrorMessageMode = 'modal')
     {
       url: Api.AddFoodPost,
       params,
+      headers: {
+        'Content-Type': ContentTypeEnum.FORM_DATA,
+      },
     },
     {
       errorMessageMode: mode,

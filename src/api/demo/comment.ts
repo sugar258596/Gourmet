@@ -4,7 +4,6 @@ import { ErrorMessageMode } from '/#/axios';
 
 import { AddParams, GetParams, ListParams } from './model/commentModel';
 import { SucssInfoModel } from '../type';
-import { ContentTypeEnum } from '/@/enums/httpEnum';
 
 // 获取发布评论以及删除的接口
 
@@ -28,9 +27,6 @@ export function addComment(params: AddParams, mode: ErrorMessageMode = 'modal') 
     {
       url: Api.AddComment,
       params,
-      headers: {
-        'Content-Type': ContentTypeEnum.FORM_DATA,
-      },
     },
     {
       errorMessageMode: mode,

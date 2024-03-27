@@ -1,10 +1,5 @@
-interface imgae {
-  url: string;
-  [propName: string]: any;
-}
-
 export interface multipleProps {
-  imageList: imgae[];
+  imageList: any[];
   title?: string;
   maxCount?: number;
   maxSize?: number;

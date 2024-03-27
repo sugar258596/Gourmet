@@ -10,9 +10,9 @@
       :max-count="maxCount"
       :multiple="multiple"
     >
-      <div v-if="fileList!.length < 8">
+      <div v-if="fileList!.length < maxCount">
         <plus-outlined />
-        <div style="margin-top: 8px">Upload</div>
+        <div style="margin-top: 8px">{{ title }}</div>
       </div>
     </Upload>
     <Modal :open="previewVisible" :title="previewTitle" :footer="null" @cancel="handleCancel">
