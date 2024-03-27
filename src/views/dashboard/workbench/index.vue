@@ -52,7 +52,8 @@
         formData.append('title', formState.title);
         formData.append('description', formState.description);
         formState.files.forEach((file: any) => {
-          formData.append('files', file);
+          console.log('file', file);
+          formData.append('files', file.originFileObj);
         });
         addFoodPost(formData as any).then(() => {
           resetForm();
