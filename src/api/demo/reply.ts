@@ -33,6 +33,7 @@ export function addReply(params: AddParams, mode: ErrorMessageMode = 'modal') {
     },
     {
       errorMessageMode: mode,
+      successMessageMode: 'message',
     },
   );
 }

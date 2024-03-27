@@ -32,6 +32,7 @@ export function addFoodPost(params: AddParams, mode: ErrorMessageMode = 'modal')
     },
     {
       errorMessageMode: mode,
+      successMessageMode: 'message',
     },
   );
 }
