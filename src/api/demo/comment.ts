@@ -2,10 +2,10 @@ import { defHttp } from '/@/utils/http/axios';
 
 import { ErrorMessageMode } from '/#/axios';
 
-import { AddComment, GetComment, List } from './model/commentModel';
+import { AddParams, GetParams, ListParams } from './model/commentModel';
 import { SucssInfoModel } from '../type';
 
-// 获取发布以及删除的接口
+// 获取发布评论以及删除的接口
 
 enum Api {
   AddComment = '/comment/add',
@@ -15,14 +15,14 @@ enum Api {
 
 /**
  * @description - 发布的方法
- * @param {AddComment} params - 携带参数
+ * @param {AddParams} params - 携带参数
  * @param {number} params.id - 美食的id
  * @param {string} params.content - 评论的内容
  * @param {ErrorMessageMode} mode - 错误提示
  * @returns
  */
 
-export function addComment(params: AddComment, mode: ErrorMessageMode = 'modal') {
+export function addComment(params: AddParams, mode: ErrorMessageMode = 'modal') {
   return defHttp.post<SucssInfoModel>(
     {
       url: Api.AddComment,
@@ -36,7 +36,7 @@ export function addComment(params: AddComment, mode: ErrorMessageMode = 'modal')
 
 /**
  * @description - 获取评论的方法
- * @param {GetComment} params - 携带参数
+ * @param {GetParams} params - 携带参数
  * @param {number} params.id - 美食的id
  * @param {number} params.page - 页码
  * @param {number} params.pageSize - 每页的数量
@@ -44,8 +44,8 @@ export function addComment(params: AddComment, mode: ErrorMessageMode = 'modal')
  * @returns
  */
 
-export function getComment(params: GetComment, mode: ErrorMessageMode = 'modal') {
-  return defHttp.get<SucssInfoModel<List[]>>(
+export function getComment(params: GetParams, mode: ErrorMessageMode = 'modal') {
+  return defHttp.get<SucssInfoModel<ListParams[]>>(
     {
       url: Api.GetComment,
       params,

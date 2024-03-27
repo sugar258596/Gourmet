@@ -18,7 +18,7 @@ export interface List {
 /**
  * @description - 发布的参数
  */
-export interface addFoodPost {
+export interface AddParams {
   title: string;
   description: string;
   files: FileList;
@@ -28,7 +28,7 @@ export interface addFoodPost {
  * @description - 查询的参数
  */
 
-export interface GetFoodPost {
+export interface GetParams {
   title?: string;
   page?: number;
   pageSize?: number;

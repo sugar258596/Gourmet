@@ -3,7 +3,7 @@ import { defHttp } from '/@/utils/http/axios';
 import { ErrorMessageMode } from '/#/axios';
 
 import { List } from './model/publishModel';
-import { AddReply, GetReply } from './model/replyModel';
+import { AddParams, GetParams } from './model/replyModel';
 
 import { SucssInfoModel } from '../type';
 
@@ -25,7 +25,7 @@ enum Api {
  * @returns
  */
 
-export function addReply(params: AddReply, mode: ErrorMessageMode = 'modal') {
+export function addReply(params: AddParams, mode: ErrorMessageMode = 'modal') {
   return defHttp.post<SucssInfoModel>(
     {
       url: Api.AddReply,
@@ -47,7 +47,7 @@ export function addReply(params: AddReply, mode: ErrorMessageMode = 'modal') {
  * @returns
  */
 
-export function getReply(params: GetReply, mode: ErrorMessageMode = 'modal') {
+export function getReply(params: GetParams, mode: ErrorMessageMode = 'modal') {
   return defHttp.get<SucssInfoModel<List[]>>(
     {
       url: Api.GetReply,

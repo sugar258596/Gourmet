@@ -1,18 +1,18 @@
 import { GetUserInfoModel } from '@/api/sys/model/userModel';
 
-export interface List {
+export interface ListParams {
   id: number;
   comment: string;
   createdAt: string;
   updatedAt: string;
   user: Pick<GetUserInfoModel, 'userId' | 'username' | 'avatar'>;
-  replies: List[];
+  replies: ListParams[];
 }
 
 /**
  * @description 发布评论参数
  */
-export interface AddComment {
+export interface AddParams {
   id: number;
   content: string;
 }
@@ -20,7 +20,7 @@ export interface AddComment {
 /**
  * @description 获取评论参数
  */
-export interface GetComment {
+export interface GetParams {
   id?: number;
   page?: number;
   pageSize?: number;

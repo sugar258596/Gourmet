@@ -2,10 +2,10 @@ import { defHttp } from '/@/utils/http/axios';
 
 import { ErrorMessageMode } from '/#/axios';
 
-import { addFoodPost, GetFoodPost, GetInfoModel } from './model/publishModel';
+import { AddParams, GetParams, GetInfoModel } from './model/publishModel';
 import { SucssInfoModel } from '../type';
 
-// 获取发布以及删除的接口
+// 获取发布美食以及删除的接口
 
 enum Api {
   AddFoodPost = '/food-post/add',
@@ -16,7 +16,7 @@ enum Api {
 
 /**
  * @description - 发布的方法
- * @param {addFoodPost} params - 携带参数
+ * @param {AddParams} params - 携带参数
  * @param {string} params.title - 标题
  * @param {string} params.description - 描述
  * @param {FileList} params.files - 文件
@@ -24,7 +24,7 @@ enum Api {
  * @returns
  */
 
-export function addFoodPost(params: addFoodPost, mode: ErrorMessageMode = 'modal') {
+export function addFoodPost(params: AddParams, mode: ErrorMessageMode = 'modal') {
   return defHttp.post<SucssInfoModel>(
     {
       url: Api.AddFoodPost,
@@ -38,7 +38,7 @@ export function addFoodPost(params: addFoodPost, mode: ErrorMessageMode = 'modal
 
 /**
  * @description - 获取的方法
- * @param {GetFoodPost} params - 携带参数
+ * @param {GetParams} params - 携带参数
  * @param {string} params.title - 标题
  * @param {number} params.page - 页码
  * @param {number} params.pageSize - 每页的数量
@@ -46,7 +46,7 @@ export function addFoodPost(params: addFoodPost, mode: ErrorMessageMode = 'modal
  * @returns
  */
 
-export function getFoodPost(params?: GetFoodPost, mode: ErrorMessageMode = 'modal') {
+export function getFoodPost(params?: GetParams, mode: ErrorMessageMode = 'modal') {
   return defHttp.get<SucssInfoModel<GetInfoModel[]>>(
     {
       url: Api.GetFoodPost,
