@@ -2,11 +2,15 @@ import { GetUserInfoModel } from '@/api/sys/model/userModel';
 
 export interface ListParams {
   id: number;
-  comment: string;
+  content: string;
   createdAt: string;
   updatedAt: string;
   user: Pick<GetUserInfoModel, 'userId' | 'username' | 'avatar'>;
   replies: ListParams[];
+}
+
+export interface CommetnParmas {
+  List: ListParams[];
 }
 
 /**

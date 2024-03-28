@@ -2,7 +2,7 @@ import { defHttp } from '/@/utils/http/axios';
 
 import { ErrorMessageMode } from '/#/axios';
 
-import { List } from './model/publishModel';
+import { ListTpye } from './model/publishModel';
 import { AddParams, GetParams } from './model/replyModel';
 
 import { SucssInfoModel } from '../type';
@@ -49,7 +49,7 @@ export function addReply(params: AddParams, mode: ErrorMessageMode = 'modal') {
  */
 
 export function getReply(params: GetParams, mode: ErrorMessageMode = 'modal') {
-  return defHttp.get<SucssInfoModel<List[]>>(
+  return defHttp.get<SucssInfoModel<ListTpye[]>>(
     {
       url: Api.GetReply,
       params,
