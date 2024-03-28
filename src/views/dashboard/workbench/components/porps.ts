@@ -5,4 +5,5 @@ export interface multipleProps {
   maxSize?: number;
   accept?: string;
   multiple?: boolean;
+  disabled?: boolean;
 }

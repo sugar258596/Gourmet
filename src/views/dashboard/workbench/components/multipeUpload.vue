@@ -9,6 +9,7 @@
       :accept="accept"
       :max-count="maxCount"
       :multiple="multiple"
+      :disabled="disabled"
     >
       <div v-if="fileList!.length < maxCount">
         <plus-outlined />
@@ -36,6 +37,7 @@
     maxSize: 2 * 1024 * 1024,
     multiple: true,
     accept: 'image/png, image/jpeg, image/jpg, image/gif, image/svg+xml,video/*',
+    disabled: false,
   });
 
   const emit = defineEmits(['update:imageList']);
