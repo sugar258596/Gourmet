@@ -1,6 +1,7 @@
 {
   "dashboard": "Dashboard",
   "about": "About",
-  "workbench": "Workbench",
-  "analysis": "Analysis"
+  "analysis": "Food sharing",
+  "workbench": "Publish food",
+  "details": "details"
 }
